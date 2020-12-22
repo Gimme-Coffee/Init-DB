@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 import json
 from typing import List
 import requests
@@ -104,16 +103,8 @@ def downloadData():
 
 
 def downloadSprites():
-    with open('index.html', 'r') as f:
-        contents = f.read()
-        soup = BeautifulSoup(contents, 'lxml')
-
-    anchorTags = soup.select('body > table > tbody > tr > td > a')
-
-    fileNames = []
-
-    for a in anchorTags:
-        fileNames.append(a.attrs['href'])
+    with open('data.json') as json_file:
+        fileNames = json.load(json_file)
 
     for f in fileNames:
         animatedFrontUrl = f'https://play.pokemonshowdown.com/sprites/gen5ani/{f}'
