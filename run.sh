@@ -13,3 +13,7 @@ mkdir sprites/front-shiny
 
 mkdir sprites/back
 mkdir sprites/back-shiny
+
+echo "Running script..."
+
+python3 init.py

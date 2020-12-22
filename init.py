@@ -2,8 +2,6 @@ import json
 from typing import List
 import requests
 
-dataURIMaps = {}
-
 
 def mapGenOneToFive():
     pass
@@ -104,7 +102,7 @@ def downloadData():
 
 def downloadSprites():
     with open('data.json') as json_file:
-        fileNames = json.load(json_file)
+        fileNames = json.load(json_file)['files']
 
     for f in fileNames:
         animatedFrontUrl = f'https://play.pokemonshowdown.com/sprites/gen5ani/{f}'
@@ -112,6 +110,28 @@ def downloadSprites():
 
         animatedShinyFrontUrl = f'https://play.pokemonshowdown.com/sprites/gen5ani-shiny/{f}'
         animatedShinyBackUrl = f'https://play.pokemonshowdown.com/sprites/gen5ani-back-shiny/{f}'
+
+        r = requests.get(animatedFrontUrl)
+
+        with open(f'./sprites/front/{f}', 'wb') as x:
+            x.write(r.content)
+
+        r = requests.get(animatedBackUrl)
+
+        with open(f'./sprites/back/{f}', 'wb') as x:
+            x.write(r.content)
+
+        r = requests.get(animatedShinyFrontUrl)
+
+        with open(f'./sprites/front-shiny/{f}', 'wb') as x:
+            x.write(r.content)
+
+        r = requests.get(animatedShinyBackUrl)
+
+        with open(f'./sprites/back-shiny/{f}', 'wb') as x:
+            x.write(r.content)
+
+        break
 
 
 if __name__ == "__main__":
