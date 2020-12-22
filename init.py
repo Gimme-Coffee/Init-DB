@@ -131,8 +131,6 @@ def downloadSprites():
         with open(f'./sprites/back-shiny/{f}', 'wb') as x:
             x.write(r.content)
 
-        break
-
 
 if __name__ == "__main__":
     # downloadData()

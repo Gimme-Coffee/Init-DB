@@ -1,2 +1,6 @@
 .vscode/
 sprites/
+.DS_Store
+
+# This is where our super secret key is.
+pokemon-editor-firebase-adminsdk-n8jkh-6dca834788.json
