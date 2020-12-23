@@ -16,7 +16,7 @@ mkdir sprites/back-shiny
 
 echo "Setting super secret environment variables..."
 
-export GOOGLE_APPLICATION_CREDENTIALS="<insert location of super secret key here>"
+export GOOGLE_APPLICATION_CREDENTIALS="./pokemon-editor-firebase-adminsdk-n8jkh-6dca834788.json"
 
 echo "Running script..."
 

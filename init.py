@@ -3,10 +3,6 @@ from typing import List
 import requests
 
 
-def mapGenOneToFive():
-    pass
-
-
 class Pokemon(object):
     def __init__(self, name: str):
         pokemonData = requests.get(
@@ -49,13 +45,13 @@ class Pokemon(object):
 
         self.flavorText = [swordEntry, shieldEntry]
 
-        self.genderRatio = speciesData['gender_rate'] / 8
+        self.genderRatio = speciesData['gender_rate']
 
         self.habitat = speciesData['habitat']['name']
 
         self.hasGenderDifferences = speciesData['has_gender_differences']
 
-        self.height = pokemonData['height']
+        self.height = pokemonData['height']/10
 
         self.heldItems = [x['item']['name'] for x in pokemonData['held_items']]
 
@@ -76,7 +72,7 @@ class Pokemon(object):
             learnLevel = lastData['level_learned_at']
             learnMethod = lastData['move_learn_method']['name']
 
-            self.moves[moveName] = {learnLevel, learnMethod}
+            self.moves[moveName] = [learnLevel, learnMethod]
 
         self.name = speciesData['name']
 
@@ -89,7 +85,7 @@ class Pokemon(object):
 
         self.types = [x['type']['name'] for x in pokemonData['types']]
 
-        self.weight = pokemonData['weight']
+        self.weight = pokemonData['weight']/10
 
 
 def downloadData():
@@ -97,7 +93,9 @@ def downloadData():
     #     pokemon = Pokemon(str(i))
     #     break
 
-    pokemon = Pokemon('eevee')
+    pokemon = Pokemon('ditto')
+
+    print(json.dumps(pokemon.__dict__))
 
 
 def downloadSprites():
@@ -133,5 +131,5 @@ def downloadSprites():
 
 
 if __name__ == "__main__":
-    # downloadData()
-    downloadSprites()
+    downloadData()
+    # downloadSprites()

@@ -1,0 +1,36 @@
+{
+    "abilities": ["limber", "imposter"],
+    "baseExperience": 101,
+    "baseHappiness": 70,
+    "captureRate": 35,
+    "genus": "Transform Pok\u00e9mon",
+    "color": "purple",
+    "eggGroups": ["ditto"],
+    "growthRate": "medium",
+    "flavorText": [
+        "It can reconstitute its entire cellular\nstructure to change into what it sees,\nbut it returns to normal when it relaxes.",
+        "When it encounters another Ditto, it will move\nfaster than normal to duplicate that opponent exactly."
+    ],
+    "genderRatio": -1,
+    "habitat": "urban",
+    "hasGenderDifferences": false,
+    "height": 0.3,
+    "heldItems": ["metal-powder", "quick-powder"],
+    "id": 132,
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false,
+    "moves": { "transform": [1, "level-up"] },
+    "name": "ditto",
+    "shape": "ball",
+    "stats": {
+        "hp": 48,
+        "atk": 48,
+        "def": 48,
+        "spa": 48,
+        "spd": 48,
+        "spe": 48
+    },
+    "types": ["normal"],
+    "weight": 4.0
+}
