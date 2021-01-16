@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Battle/PokemonTeam.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Battle/PokemonEnemyTeam.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Battle/GroundGrass.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Battle/Background.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/BattleScene.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Battle/BattleDialogueBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/Battle/00.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Dialogue/DialogueBox.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "slide_in"
+length = 2.0
+step = 1.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Enemy:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -320, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Enemy:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Player:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 320, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Player:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 320, 180 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="PokemonTeam" parent="Player" instance=ExtResource( 1 )]
+position = Vector2( 270, 100 )
+
+[node name="Field" type="Sprite" parent="Player"]
+position = Vector2( 68, 133 )
+texture = ExtResource( 3 )
+
+[node name="Pokemon" type="Sprite" parent="Player"]
+position = Vector2( 68, 110 )
+texture = ExtResource( 7 )
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="PokemonEnemyTeam" parent="Enemy" instance=ExtResource( 2 )]
+position = Vector2( 50.5, 43 )
+
+[node name="EnemyField" type="Sprite" parent="Enemy"]
+position = Vector2( 252, 64 )
+texture = ExtResource( 3 )
+
+[node name="EnemyPokemon" type="Sprite" parent="Enemy"]
+position = Vector2( 257, 41 )
+texture = ExtResource( 7 )
+
+[node name="DialogueBox" parent="." instance=ExtResource( 8 )]
+margin_top = 120.0
+margin_bottom = 180.0
+
+[node name="BattleDialogueButtons" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 154.0
+margin_top = 125.0
+margin_right = 314.0
+margin_bottom = 175.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/slide_in = SubResource( 1 )

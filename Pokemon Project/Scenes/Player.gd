@@ -4,9 +4,9 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var ray = $RayCast2D
 
-var speed = 128
-var tile_size = 32
-var tile_collision = 48
+var speed = 48
+var tile_size = 16
+var tile_collision = 32
 
 var last_pos = Vector2.ZERO
 var target_pos = Vector2.ZERO
@@ -55,7 +55,14 @@ func get_move_dir():
 		
 		animationTree.set("parameters/Idle/blend_position", move_dir)
 		animationTree.set("parameters/Walk/blend_position", move_dir)
-		animationState.travel("Walk")
+		animationTree.set("parameters/Run/blend_position", move_dir)
+		
+		if Input.is_action_pressed("ui_cancel"):
+			animationState.travel("Run")
+			speed = 96
+		else:
+			animationState.travel("Walk")
+			speed = 48
 	else:
 		animationState.travel("Idle")
 
